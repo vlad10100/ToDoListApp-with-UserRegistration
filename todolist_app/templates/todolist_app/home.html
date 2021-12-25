@@ -1,0 +1,34 @@
+{% extends 'todolist_app/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{% url 'todolist_app:home' %}">Django ToDoList with User Registration</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	   	<div class="d-flex navbar-nav" id="navbarNavAltMarkup">
+	   		<a class="nav-link active" href="{% url 'todolist_app:home' %}">Home</a>
+	        <a class="nav-link" href="{% url 'todolist_app:tasklist' %}">TaskList</a>
+	        <a class="nav-link" href="{% url 'todolist_app:login_page' %}">LogIn</a>
+	        <a class="nav-link" href="{% url 'todolist_app:register' %}">SignUp</a>
+
+    	</div>
+	  </div>
+	</nav>
+
+	<div class="container" style="padding-top: 60px;">
+		<h1>HOME</h1>
+		<hr>
+
+		<div>
+			<h1>Django Project</h1>
+			<h3>To-Do App with User Registration</h3>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Django_logo.svg/1024px-Django_logo.svg.png">
+		</div>
+	</div>
+
+{% endblock %}

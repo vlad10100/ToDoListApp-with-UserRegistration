@@ -1,0 +1,57 @@
+{% extends 'todolist_app/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{% url 'todolist_app:home' %}">Django ToDoList with User Registration</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	   	<div class="d-flex navbar-nav" id="navbarNavAltMarkup">
+	   		<a class="nav-link" href="{% url 'todolist_app:home' %}">Home</a>
+	        <a class="nav-link active" href="{% url 'todolist_app:tasklist' %}">TaskList</a>
+	        <a class="nav-link" href="{% url 'todolist_app:logout_page' %}">LogOut</a>
+    	</div>
+	  </div>
+	</nav>
+
+	<div class="container" style="padding-top: 60px;">
+		<h1>TASKLIST</h1>
+		<h4>User: {{request.user}}</h4>
+		<hr>
+
+		<form method="GET">
+			<input type="text" name="search-area">
+			<input type="submit" value="Search">
+		</form>
+
+		<table>
+			
+			<tr>
+				<th>Items</th>
+			</tr>
+			{% for task in tasks %}
+				<tr>
+					<td><strong>{{task.title}}</strong></td>
+					<td style="padding-left: 50px;"><button class="btn btn-warning" href="{% url 'todolist_app:taskdetail' task.id %}">View</button></td>
+					<td><button class="btn btn-success" href="{% url 'todolist_app:taskupdate' task.id %}">Update</button></td>
+					<td><button class="btn btn-danger" href="{% url 'todolist_app:taskdelete' task.id %}">Delete</button></td>
+		
+				</tr>
+				{% empty %}
+					<h1>No Item In the List</h1>
+			{% endfor %}
+		
+		
+		</table>
+
+
+
+		<button class="btn btn-success" href="{% url 'todolist_app:taskcreate' %}">Add New Task</button>
+	</div>
+
+{% endblock %}
+
